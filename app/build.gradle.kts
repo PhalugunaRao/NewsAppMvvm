@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id ("com.android.application")
+    id ("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
 }
 
@@ -34,6 +34,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    kapt {
+        correctErrorTypes = true
+        arguments {
+            arg("dagger.experimentalDaggerErrorMessages", "enabled")
+        }
+    }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -56,11 +65,11 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 //    implementation ("android.arch.lifecycle:extensions:1.1.1")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation ("com.google.dagger:dagger:2.42")
-    kapt ("com.google.dagger:dagger-compiler:2.42")
-    implementation ("androidx.browser:browser:1.4.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation ("com.google.dagger:dagger:2.49")
+    kapt ("com.google.dagger:dagger-compiler:2.49")
+    implementation ("androidx.browser:browser:1.8.0")
 
 //    testImplementation ("junit:junit:4.13.2")
 //    androidTestImplementation ("androidx.test.ext:junit:1.1.3")
